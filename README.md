@@ -37,9 +37,9 @@ expense-tracker/
 
 ```mermaid
 flowchart TD
-    A[User] -->|Registers/Logs in| B[Frontend (React)]
-    B -->|API Requests| C[Backend (Express)]
-    C -->|DB Queries| D[(PostgreSQL)]
+    A[User] -->|Registers/Logs in| B[Frontend-React]
+    B -->|API Requests| C[Backend-Express]
+    C -->|DB Queries| D[PostgreSQL]
     C -->|Role-based Logic| E[Admin/Employee Features]
     E -->|Expense Data| B
     B -->|Analytics| F[Charts/Insights]
