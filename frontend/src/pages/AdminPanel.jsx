@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ChartView from '../components/ChartView';
 
+const BACKEND_URL = "https://expense-tracker-jw02.onrender.com";
+
 function AdminPanel() {
   const [expenses, setExpenses] = useState([]);
 
   const fetchAllExpenses = async () => {
     const token = localStorage.getItem('token');
     try {
-      const res = await axios.get('/api/expenses', {
+      const res = await axios.get(`${BACKEND_URL}/api/expenses`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setExpenses(res.data);
@@ -20,7 +22,7 @@ function AdminPanel() {
   const updateStatus = async (id, status) => {
     const token = localStorage.getItem('token');
     try {
-      await axios.patch(`/api/expenses/${id}/status`, { status }, {
+      await axios.patch(`${BACKEND_URL}/api/expenses/${id}/status`, { status }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchAllExpenses();

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const BACKEND_URL = "https://expense-tracker-jw02.onrender.com";
+
 function ExpenseForm({ onAdd }) {
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
@@ -17,7 +19,7 @@ function ExpenseForm({ onAdd }) {
 
     try {
       await axios.post(
-        '/api/expenses',
+        `${BACKEND_URL}/api/expenses`,
         { amount, category, date, notes },
         { headers: { Authorization: `Bearer ${token}` } }
       );

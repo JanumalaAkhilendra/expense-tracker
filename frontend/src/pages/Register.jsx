@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const BACKEND_URL = "https://expense-tracker-jw02.onrender.com";
+
 function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -8,7 +10,7 @@ function Register() {
 
   const handleRegister = async () => {
     try {
-      await axios.post('/api/auth/register', { email, password, role });
+      await axios.post(`${BACKEND_URL}/api/auth/register`, { email, password, role });
       alert('Registration successful! Please login.');
       window.location.href = '/';
     } catch (err) {

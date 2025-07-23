@@ -15,6 +15,8 @@ import {
 
 Chart.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Tooltip, Legend, Title);
 
+const BACKEND_URL = "https://expense-tracker-jw02.onrender.com";
+
 function ChartView() {
   const [categoryData, setCategoryData] = useState([]);
   const [monthlyData, setMonthlyData] = useState([]);
@@ -22,11 +24,11 @@ function ChartView() {
   useEffect(() => {
     const token = localStorage.getItem('token');
 
-    axios.get('/api/insights/category', {
+    axios.get(`${BACKEND_URL}/api/insights/category`, {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setCategoryData(res.data));
 
-    axios.get('/api/insights/monthly', {
+    axios.get(`${BACKEND_URL}/api/insights/monthly`, {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setMonthlyData(res.data));
   }, []);

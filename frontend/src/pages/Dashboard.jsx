@@ -3,6 +3,8 @@ import axios from 'axios';
 import ExpenseForm from '../components/ExpenseForm';
 import ExpenseList from '../components/ExpenseList';
 
+const BACKEND_URL = "https://expense-tracker-jw02.onrender.com";
+
 function Dashboard() {
   const [expenses, setExpenses] = useState([]);
 
@@ -14,7 +16,7 @@ function Dashboard() {
       return;
     }
     try {
-      const res = await axios.get('/api/expenses/mine', {
+      const res = await axios.get(`${BACKEND_URL}/api/expenses/mine`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setExpenses(res.data);
